@@ -233,7 +233,12 @@ button9.addEventListener('click', ()=>{
     updateDisplay();
 });
 
+
+
 buttonAdd.addEventListener('click', ()=>{
+    
+    checkOperation();
+
     if(operationDone === true){
         reset();
     }
@@ -249,6 +254,9 @@ buttonAdd.addEventListener('click', ()=>{
 });
 
 buttonSubtract.addEventListener('click', ()=>{
+    
+    checkOperation();
+
     if(operationDone === true){
         reset();
     }
@@ -264,6 +272,8 @@ buttonSubtract.addEventListener('click', ()=>{
 });
 
 buttonMultiply.addEventListener('click', ()=>{
+    checkOperation();
+
     if(operationDone === true){
         reset();
     }
@@ -272,13 +282,15 @@ buttonMultiply.addEventListener('click', ()=>{
         alert("Only one operator can be selected at a time. Please clear to select another.");
     }
     else {
-        operator = 'X';
+        operator = '*';
         operatorSelected = true;
         updateDisplay();
     }
 });
 
 buttonDivide.addEventListener('click', ()=>{
+    checkOperation();
+
     if(operationDone === true){
         reset();
     }
@@ -307,7 +319,7 @@ buttonEquals.addEventListener('click', ()=>{
             case '-':
                 output.textContent = firstVar - secondVar;
                 break;
-            case 'X':
+            case '*':
                 output.textContent = firstVar * secondVar;
                 break;
             case '/':
@@ -333,6 +345,38 @@ function reset(){
     operationDone = false;
     let output = document.getElementById('output');
     output.textContent = '';
+}
+
+function checkOperation(){
+    let output = document.getElementById('output');
+    let newVar = null;
+    if(firstVar != null && operator != null && secondVar != null){
+        switch (operator){
+            case '+':
+                newVar = firstVar + secondVar;
+                output.textContent = newVar;
+                break;
+            case '-':
+                newVar = firstVar - secondVar;
+                output.textContent = newVar;
+                break;
+            case '*':
+                newVar = firstVar * secondVar;
+                output.textContent = newVar;
+                break;
+            case '/':
+                newVar = firstVar / secondVar;
+                output.textContent = newVar;
+                break;
+        }
+
+        firstVar = newVar;
+        operator = null;
+        secondVar = null;
+        operatorSelected = false;
+
+           
+    }
 }
 
 function updateDisplay(){
