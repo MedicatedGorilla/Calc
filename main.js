@@ -314,16 +314,16 @@ buttonEquals.addEventListener('click', ()=>{
     if(firstVar != null & operator != null && secondVar != null && operationDone === false){
         switch (operator){
             case '+':
-                output.textContent = firstVar + secondVar;
+                output.textContent = Math.round(add(firstVar,secondVar) * 100) / 100;
                 break;
             case '-':
-                output.textContent = firstVar - secondVar;
+                output.textContent = Math.round(subtract(firstVar,secondVar) * 100) / 100;
                 break;
             case '*':
-                output.textContent = firstVar * secondVar;
+                output.textContent = Math.round(multiply(firstVar,secondVar) * 100) / 100;
                 break;
             case '/':
-                output.textContent = firstVar / secondVar;
+                output.textContent = Math.round(divide(firstVar,secondVar) * 100) / 100;
                 break;
         }
         operationDone = true;
@@ -354,19 +354,19 @@ function checkOperation(){
         switch (operator){
             case '+':
                 newVar = firstVar + secondVar;
-                output.textContent = newVar;
+                output.textContent = Math.round(newVar * 100) / 100;
                 break;
             case '-':
                 newVar = firstVar - secondVar;
-                output.textContent = newVar;
+                output.textContent = Math.round(newVar * 100) / 100;
                 break;
             case '*':
                 newVar = firstVar * secondVar;
-                output.textContent = newVar;
+                output.textContent = Math.round(newVar * 100) / 100;
                 break;
             case '/':
                 newVar = firstVar / secondVar;
-                output.textContent = newVar;
+                output.textContent = Math.round(newVar * 100) / 100;
                 break;
         }
 
